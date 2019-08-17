@@ -5,6 +5,9 @@ from selenium.webdriver.support.ui import Select
 # to pause between navigation
 import time
 
+# for file management
+import os
+
 driver = webdriver.Chrome('/Users/nithin/Downloads/chromedriver')
 driver.get('https://www.pizzahut.com/index.php#/home')
 time.sleep(3)
@@ -34,15 +37,19 @@ time.sleep(5)
 checkout = driver.find_element_by_id('checkout-bottom-os')
 checkout.click()
 time.sleep(5)
+# we get password for pizzahut
+php = ''
+with open('/Users/nithin/Documents/php.txt', 'r') as file:
+    php = file.read()
 email = driver.find_element_by_name('email')
 password = driver.find_element_by_name('password')
-sign_in_button = driver.find_element_by_id('ph-login')
+login_button = driver.find_element_by_id('ph-login')
 # we send text input to email and password fields
 email.send_keys('nithinp300@gmail.com')
 time.sleep(3)
-password.send_keys('naruto768')
+password.send_keys(php)
 time.sleep(3)
-sign_in_button.click()
+login_button.click()
 time.sleep(6)
 payment = driver.find_element_by_id('ph-co-2-continue')
 payment.click()
